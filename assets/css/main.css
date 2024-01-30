@@ -1,0 +1,383 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300&family=Roboto:wght@300;500&display=swap");
+
+/* ------------ CUSTOM PROPERTIES AND OVERALL STYLING ------------ */
+:root {
+  /* Colors */
+  --primary: #FFC440;
+  --text: #331616;
+  --background: #F7F6F0;
+  --circle-color: 255, 196, 64, 0.57;
+  --brown: #7A4141;
+  --placeholder-text: #00000080;
+
+  /* Font */
+  --font: "Poppins", Arial, Helvetica, sans-serif;
+
+  /* Other styles */
+  --border-radius: 8px;
+
+    /* General settings */
+    font-family: var(--font);
+    background: var(--background);
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+}
+
+/* Removes margin on all relevant tags. Body for an edge-to-edge look on sections, and headings/paragraphs to easier follow sketch */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: 100vh;
+  /* max-width: 744px; */
+  padding: 0 1rem;
+}
+
+  /* ------------ OVERALL TYPOGRAPHY ------------ */
+  p {
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  h1 {
+    font-size:  22px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  p.thin {
+    font-weight: 300;
+  }
+
+/* ------------ OVERALL ELEMENTS ------------ */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(222, 70, 0, 0.8);
+}
+
+button {
+    padding: 13px 40px;
+    width: 100%;
+    font-family: var(--font);
+    font-weight: 300;
+    color: var(--text); /* color set here otherwise it appears blue on iOS devices */
+}
+
+a {
+  width: 100%;
+}
+
+button a {
+  font-weight: 300;
+}
+
+.primary {
+  background-image: linear-gradient(30deg, #FFAF3A, var(--primary));
+  color: var(--text);
+  border: 2px solid var(--primary);
+  background-size: 100% auto;
+}
+
+.secondary {
+  background-color: transparent;
+  border: 2px solid var(--text);
+}
+
+.logOut {
+  margin-top: 2rem;
+}
+
+button:hover {
+  background-position: right center;
+  background-size: 200% auto;
+}
+
+.primary:hover {
+  -webkit-animation: pulsePrimary 2s infinite;
+  animation: pulsePrimary 1.5s infinite;
+ }
+
+ .secondary:hover {
+  -webkit-animation: pulseSecondary 2s infinite;
+  animation: pulseSecondary 1.5s infinite;
+ }
+ 
+/* Animation for primary button */
+ @keyframes pulsePrimary {
+  0% {
+   box-shadow: 0 0 0 0 #FFBE2D;
+  }
+ 
+  70% {
+   box-shadow: 0 0 0 8px rgb(218 129 68 / 0%);
+  }
+ 
+  100% {
+   box-shadow: 0 0 0 0 rgb(218 129 68 / 0%);
+  }
+ }
+
+/* Animation for secondary button */
+ @keyframes pulseSecondary {
+  0% {
+   box-shadow: 0 0 0 0 #331616;
+  }
+ 
+  70% {
+   box-shadow: 0 0 0 8px rgb(218 129 68 / 0%);
+  }
+ 
+  100% {
+   box-shadow: 0 0 0 0 rgb(218 129 68 / 0%);
+  }
+ }
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3.5rem;
+}
+
+button, input {
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+
+/* Specific styling for buttons inside Swalalert2 windows */
+div:where(.swal2-container) .swal2-input {
+  border-radius: var(--border-radius);
+  font-size: 18px;
+  margin: 1rem !important;
+  height: auto!important;
+  padding: 17px 20px!important;
+}
+
+div:where(.swal2-container) .swal2-input:focus, 
+div:where(.swal2-container) .swal2-input:active, 
+input:focus, 
+input:active {
+  border: 2px solid var(--primary); 
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 196, 0, 0.5);
+  padding: 15px 18px;
+}
+
+input {
+  padding: 17px 20px;
+  font-family: var(--font);
+}
+
+.form-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  margin-left: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+/* Hides the default checkbox, and further down - I'm creating a custom checkbox to be able to style it myself. */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+/* Creates a custom checkbox */
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 7px;
+  border: 1px solid var(--primary);
+  transition: 300ms;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: var(--primary);
+  border-radius: 7px;
+  animation: pulse 500ms ease-in-out;
+}
+
+/* Creates the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  border: none;
+}
+
+/* Shows the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Styles the checkmark/indicator */
+.container .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 4px;
+  height: 9px;
+  border: solid #7A4141;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+/* Animation for checkmark */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 #FFB56B72;
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+
+  75% {
+    box-shadow: 0 0 0 10px #FFB56B72;
+  }
+
+  100% {
+    box-shadow: 0 0 0 13px #FFB56B72;
+    rotate: 0;
+  }
+}
+
+/* ------- */
+.main-wrapper {
+  flex-grow: 1; /* Allow the main-wrapper to grow and take available vertical space */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+  /* margin: 0 auto; */
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-white);
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.logo {
+  width: 33px;
+}
+
+.disclaimer {
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.swal2-actions {
+  margin: 1rem;
+  gap: 1rem;
+}
+
+/* ------------ MEDIA QUERIES ------------ */
+/* ------------ Larger mobiles ------------ */
+@media (min-width: 430px) {
+  .btns {
+    flex-direction: row;
+    justify-content: center;
+    }
+}
+
+/* ------------ Tablet and up ------------ */
+@media (min-width: 744px) {
+  #root {
+    max-width: 744px; /* Fixed width for larger screens */
+  }
+}
+
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 0.2em solid;
+  }
+}
+
+/* ------------ Tablet ------------ */
+/* @media (max-width: 1279px) and (min-width: 744px) {
+
+} */
+
+/* ------------ Desktop ------------ */
+/* @media (min-width: 1280px) {
+
+} */
